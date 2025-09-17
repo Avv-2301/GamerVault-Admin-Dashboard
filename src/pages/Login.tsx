@@ -5,17 +5,19 @@ import { MdLogin } from "react-icons/md";
 
 const Login: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-10">
+      <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 w-full max-w-md mx-auto">
         {/* Logo */}
-        <div className="flex flex-col items-center mb-6">
-          <div className="bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-4">
+        <div className="flex flex-col items-center mb-6 text-center">
+          <div className="bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-3 sm:p-4">
             <span className="text-white text-2xl">
-              <IoGameController size={25} />
+              <IoGameController size={28} />
             </span>
           </div>
-          <h2 className="text-2xl font-bold mt-2">GamerVault</h2>
-          <p className="text-gray-500 text-md">Admin Portal Access</p>
+          <h2 className="text-xl sm:text-2xl font-bold mt-2">GamerVault</h2>
+          <p className="text-gray-500 text-sm sm:text-md">
+            Admin Portal Access
+          </p>
         </div>
 
         {/* Form */}
@@ -32,7 +34,7 @@ const Login: React.FC = () => {
               <input
                 type="text"
                 placeholder="Enter your email or username"
-                className="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                className="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm sm:text-base"
               />
             </div>
           </div>
@@ -49,14 +51,14 @@ const Login: React.FC = () => {
               <input
                 type="password"
                 placeholder="Enter your password"
-                className="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                className="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm sm:text-base"
               />
             </div>
           </div>
 
-          {/* Remember Me + Forgot Password */}
-          <div className="flex items-center justify-between mb-4">
-            <a href="#" className="text-md text-green-600 hover:underline">
+          {/* Forgot Password */}
+          <div className="flex items-center justify-end mb-4">
+            <a href="#" className="text-sm sm:text-md text-green-600 hover:underline">
               Forgot password?
             </a>
           </div>
@@ -64,30 +66,30 @@ const Login: React.FC = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-md flex items-center justify-center space-x-2"
+            className="w-full bg-green-600 hover:bg-green-700 text-white py-2 sm:py-3 rounded-md flex items-center justify-center space-x-2 text-sm sm:text-base"
           >
-            <MdLogin size={25} />
+            <MdLogin size={20} className="sm:w-6 sm:h-6" />
             <span className="font-semibold">Sign In to Admin Panel</span>
           </button>
         </form>
 
         {/* Secure Notice */}
-        <div className="bg-green-100 text-sm p-4 rounded-md mt-6 flex items-start space-x-3">
-          <div className="text-green-700 flex-shrink-0 mt-5">
-            <FaShieldAlt size={20} />
+        <div className="bg-green-100 text-sm p-3 sm:p-4 rounded-md mt-6 flex items-start space-x-3">
+          <div className="text-green-700 flex-shrink-0 mt-1">
+            <FaShieldAlt size={18} className="sm:w-5 sm:h-5" />
           </div>
-
-          {/* Text */}
           <div>
-            <p className="font-bold text-[17px] text-black">
+            <p className="font-bold text-black text-sm sm:text-base">
               Secure Admin Access
             </p>
-            <p>Your connection is encrypted and monitored for security.</p>
+            <p className="text-xs sm:text-sm">
+              Your connection is encrypted and monitored for security.
+            </p>
           </div>
         </div>
 
         {/* Footer */}
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-xs sm:text-sm text-gray-500 mt-6">
           Need help?{" "}
           <a href="#" className="text-green-600 hover:underline">
             Contact IT Support

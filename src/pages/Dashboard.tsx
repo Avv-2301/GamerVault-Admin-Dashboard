@@ -69,6 +69,7 @@ const Dashboard: React.FC = () => {
 
   const barOptions = {
     responsive: true,
+    maintainAspectRatio: false, // ✅ lets charts resize properly on mobile
     plugins: {
       legend: {
         display: false,
@@ -76,7 +77,6 @@ const Dashboard: React.FC = () => {
     },
   };
 
-  // Line chart data (User Growth Trends)
   const lineData = {
     labels: [
       "Jan",
@@ -119,18 +119,20 @@ const Dashboard: React.FC = () => {
 
   const lineOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "bottom" as const,
       },
     },
   };
+
   return (
     <div className="flex">
       <main className="flex-1 bg-gray-50 min-h-screen">
-        <div className="p-6 space-y-6">
+        <div className="p-4 md:p-6 space-y-6">
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <StatCard
               title="Total Revenue"
               value="$124,892"
@@ -158,18 +160,22 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Charts */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <ChartCard title="Revenue Overview">
-              <Bar data={barData} options={barOptions} />{" "}
+              <div className="w-full h-full">
+                <Bar data={barData} options={barOptions} />
+              </div>
             </ChartCard>
+
             <ChartCard title="User Growth Trends">
-              {" "}
-              <Line data={lineData} options={lineOptions} />
+              <div className="w-full h-full">
+                <Line data={lineData} options={lineOptions} />
+              </div>
             </ChartCard>
           </div>
 
           {/* Lists & Quick Actions */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <ListCard
               title="Top Games"
               items={[
