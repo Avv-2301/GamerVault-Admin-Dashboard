@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Layout from "./components/common/Layout";
 import Dashboard from "./pages/Dashboard";
+import UserManagement from "./pages/UserManagement";
 
 const App: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Layout />}>
           <Route index element={<Dashboard />} />
+          <Route path="users" element={<UserManagement/>}/>
         </Route>
       </Routes>
     </div>

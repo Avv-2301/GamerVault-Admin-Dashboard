@@ -28,9 +28,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
       <div className="hidden sm:flex items-center space-x-4">
         <div className="flex items-center space-x-2">
           <img
-            src="https://via.placeholder.com/32"
+            src="https://github.com/shadcn.png"
             alt="avatar"
-            className="rounded-full w-8 h-8 bg-black"
+            className="rounded-full w-8 h-8"
           />
           <span className="text-gray-700 font-semibold">Admin</span>
         </div>

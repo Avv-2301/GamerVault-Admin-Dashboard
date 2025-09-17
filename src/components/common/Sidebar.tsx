@@ -21,13 +21,13 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onClose }) => {
   const menuItems = [
     { label: "Dashboard", icon: <FaChartPie size={20} />, path: "/dashboard" },
-    { label: "Users", icon: <FaUsers size={20} />, path: "/users" },
-    { label: "Games", icon: <FaGamepad size={20} />, path: "/games" },
-    { label: "Discounts", icon: <FaTags size={20} />, path: "/discounts" },
-    { label: "Review", icon: <FaStar size={20} />, path: "/review" },
-    { label: "Role", icon: <FaUserShield size={20} />, path: "/role" },
-    { label: "Support", icon: <FaHeadphonesAlt size={20} />, path: "/support" },
-    { label: "Settings", icon: <FaCog size={20} />, path: "/settings" },
+    { label: "Users", icon: <FaUsers size={20} />, path: "/dashboard/users" },
+    { label: "Games", icon: <FaGamepad size={20} />, path: "/dashboard/games" },
+    { label: "Discounts", icon: <FaTags size={20} />, path: "/dashboard/discounts" },
+    { label: "Review", icon: <FaStar size={20} />, path: "/dashboard/review" },
+    { label: "Role", icon: <FaUserShield size={20} />, path: "/dashboard/role" },
+    { label: "Support", icon: <FaHeadphonesAlt size={20} />, path: "/dashboard/support" },
+    { label: "Settings", icon: <FaCog size={20} />, path: "/dashboard/settings" },
   ];
 
   return (
@@ -75,6 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onClose }) => {
             <NavLink
               key={item.label}
               to={item.path}
+              end={item.path === "/dashboard"}
               className={({ isActive }) =>
                 `flex items-center space-x-3 px-4 py-2 rounded-md text-gray-700 font-semibold hover:bg-green-50 hover:text-green-600 ${
                   isActive ? "bg-green-100 text-green-600 font-bold" : ""
