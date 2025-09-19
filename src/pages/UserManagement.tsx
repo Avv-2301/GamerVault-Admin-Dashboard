@@ -45,24 +45,41 @@ const UserManagement: React.FC = () => {
   ]);
 
   return (
-    <div className="p-4 sm:p-6">
-      <PageHeader
-        title="User Management"
-        subtitle="Manage users, roles, and permissions for your gaming platform"
-        onAddUser={() => alert("Add user clicked")}
-      />
-      <SearchFilterBar
-        onSearch={(val) => console.log("Searching:", val)}
-        onRoleChange={(val) => console.log("Role filter:", val)}
-        onStatusChange={(val) => console.log("Status filter:", val)}
-      />
-      <UserTable users={users} />
-      <Pagination
-        currentPage={1}
-        totalPages={125}
-        onPageChange={(page) => console.log("Page:", page)}
-      />
-    </div>
+    <div className="flex flex-col h-screen p-4 sm:p-6 overflow-hidden">
+  {/* Fixed Header */}
+  <div className="flex-shrink-0">
+    <PageHeader
+      title="User Management"
+      subtitle="Manage users, roles, and permissions for your gaming platform"
+      onAddUser={() => alert("Add user clicked")}
+    />
+  </div>
+
+  {/* Fixed Search/Filters */}
+  <div className="flex-shrink-0">
+    <SearchFilterBar
+      onSearch={(val) => console.log("Searching:", val)}
+      onRoleChange={(val) => console.log("Role filter:", val)}
+      onStatusChange={(val) => console.log("Status filter:", val)}
+    />
+  </div>
+
+  {/* Scrollable Table ONLY */}
+  <div className="flex-1 border rounded-md overflow-auto">
+  <div className="min-w-full">
+    <UserTable users={users} />
+  </div>
+</div>
+
+  {/* Fixed Pagination */}
+  <div className="flex-shrink-0 mt-4">
+    <Pagination
+      currentPage={1}
+      totalPages={125}
+      onPageChange={(page) => console.log("Page:", page)}
+    />
+  </div>
+</div>
   );
 };
 

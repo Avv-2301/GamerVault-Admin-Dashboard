@@ -10,6 +10,7 @@ import {
   FaHeadphonesAlt,
   FaUserShield,
 } from "react-icons/fa";
+import { GiKnightBanner } from "react-icons/gi";
 import { IoGameController } from "react-icons/io5";
 import { HiX } from "react-icons/hi";
 
@@ -23,11 +24,32 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onClose }) => {
     { label: "Dashboard", icon: <FaChartPie size={20} />, path: "/dashboard" },
     { label: "Users", icon: <FaUsers size={20} />, path: "/dashboard/users" },
     { label: "Games", icon: <FaGamepad size={20} />, path: "/dashboard/games" },
-    { label: "Discounts", icon: <FaTags size={20} />, path: "/dashboard/discounts" },
+    {
+      label: "Discounts",
+      icon: <FaTags size={20} />,
+      path: "/dashboard/discounts",
+    },
     { label: "Review", icon: <FaStar size={20} />, path: "/dashboard/review" },
-    { label: "Role", icon: <FaUserShield size={20} />, path: "/dashboard/role" },
-    { label: "Support", icon: <FaHeadphonesAlt size={20} />, path: "/dashboard/support" },
-    { label: "Settings", icon: <FaCog size={20} />, path: "/dashboard/settings" },
+    {
+      label: "Role",
+      icon: <FaUserShield size={20} />,
+      path: "/dashboard/roles",
+    },
+    {
+      label: "Banner",
+      icon: <GiKnightBanner size={20} />,
+      path: "/dashboard/banner",
+    },
+    {
+      label: "Support",
+      icon: <FaHeadphonesAlt size={20} />,
+      path: "/dashboard/support",
+    },
+    {
+      label: "Settings",
+      icon: <FaCog size={20} />,
+      path: "/dashboard/settings",
+    },
   ];
 
   return (

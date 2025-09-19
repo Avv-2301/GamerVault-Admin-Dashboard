@@ -16,7 +16,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <p>
         Showing 1 to 10 of {totalPages * 10} results
       </p>
-      <div className="flex space-x-1">
+      <div className="flex space-x-1 ml-4">
         <button
           disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
