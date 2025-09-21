@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiPlus, FiTag, FiDollarSign, FiClock } from "react-icons/fi";
 import { FaGamepad } from "react-icons/fa6";
 import { DiscountCard } from "../components/discount/DiscountCard";
@@ -40,12 +40,12 @@ export const discountsData: Discount[] = [
 ];
 
 export const DiscountManagement: React.FC = () => {
-  const [discounts, setDiscounts] = useState<Discount[]>(discountsData);
+  // const [discounts, setDiscounts] = useState<Discount[]>(discountsData);
 
-  const totalSavings = 12400;
-  const activeDiscounts = discounts.filter((d) => d.status === "Active").length;
-  const expiringSoon = discounts.filter((d) => d.status === "Expiring").length;
-  const gamesOnSale = 156;
+  // const totalSavings = 12400;
+  // const activeDiscounts = discounts.filter((d) => d.status === "Active").length;
+  // const expiringSoon = discounts.filter((d) => d.status === "Expiring").length;
+  // const gamesOnSale = 156;
 
   return (
     <div className="space-y-6">
@@ -61,29 +61,29 @@ export const DiscountManagement: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <DiscountCard
           title="Active Discounts"
-          value={activeDiscounts.toString()}
+          // value={activeDiscounts.toString()}
           icon={<FiTag className="text-green-600" size={20}/>}
           bgColor="bg-green-100"
         />
 
         <DiscountCard
           title="Games on Sale"
-          value={gamesOnSale.toString()}
+          // value={gamesOnSale.toString()}
           icon={<FaGamepad className="text-green-600" size={20}/>}
           bgColor="bg-green-100"
         />
 
         <DiscountCard
           title="Total Savings"
-          value={`$${totalSavings.toLocaleString()}`}
+          // value={`$${totalSavings.toLocaleString()}`}
           icon={<FiDollarSign className="text-green-600" size={20}/>}
           bgColor="bg-green-100"
         />
 
         <DiscountCard
           title="Expiring Soon"
-          value={expiringSoon.toString()}
-          icon={<FiTag className="text-red-600" size={20}/>}
+          // value={expiringSoon.toString()}
+          icon={<FiClock className="text-red-600" size={20}/>}
           bgColor="bg-red-100"
         />
       </div>
@@ -92,7 +92,7 @@ export const DiscountManagement: React.FC = () => {
       <Filters />
 
       {/* Table */}
-      <DiscountTable discounts={discounts} />
+      <DiscountTable discounts={discountsData} />
     </div>
   );
 };

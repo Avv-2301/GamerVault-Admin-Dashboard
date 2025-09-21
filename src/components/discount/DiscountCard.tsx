@@ -3,7 +3,7 @@ import React, { type ReactNode } from "react";
 
 interface DiscountCardProps {
   title: string;
-  value: string;
+  value?: string;
   icon: ReactNode;        // already rendered element
   bgColor?: string;       // background color for icon container
 }
