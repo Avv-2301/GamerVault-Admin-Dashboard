@@ -5,6 +5,8 @@ import Dashboard from "./pages/Dashboard";
 import UserManagement from "./pages/UserManagement";
 import RoleManagement from "./pages/RoleManagement";
 import GamesManagement from "./pages/GamesManagement";
+import BannerManagement from "./pages/BannerManagement";
+import { DiscountManagement } from "./pages/DiscountManagement";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +18,8 @@ const App: React.FC = () => {
           <Route path="users" element={<UserManagement/>}/>
           <Route path="roles" element={<RoleManagement/>}/>
           <Route path="games" element={<GamesManagement/>}/>
+          <Route path="banner" element={<BannerManagement/>}/>
+          <Route path="discounts" element={<DiscountManagement/>}/>
         </Route>
       </Routes>
     </div>
