@@ -69,10 +69,10 @@ export const DiscountTable: React.FC<DiscountTableProps> = ({ discounts }) => {
                 </span>
               </td>
               <td className="px-4 py-2 flex gap-2">
-                <button className="text-green-500 hover:text-blue-700">
+                <button className="text-green-500 hover:text-blue-700 cursor-pointer">
                   <FiEdit />
                 </button>
-                <button className="text-red-500 hover:text-red-700 text-red-500">
+                <button className="text-red-500 hover:text-red-700 text-red-500 cursor-pointer">
                   <FaTrash />
                 </button>
               </td>

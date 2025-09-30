@@ -12,10 +12,14 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
 
   const titles: Record<string, string> = {
     "/dashboard": "Dashboard Overview",
-    "/users": "Users",
-    "/games": "Games",
-    "/discounts": "Discounts",
-    "/settings": "Settings",
+    "/dashboard/users": "Users Overview",
+    "/dashboard/games": "Games Overview",
+    "/dashboard/discounts": "Discounts Overview",
+    "/dashboard/review": "Review Overview",
+    "/dashboard/roles": "Roles Overview",
+    "/dashboard/banner": "Banner Overview",
+    "/dashboard/support": "Support Overview",
+    "/dashboard/settings": "Settings Overview",
   };
 
   const title = titles[location.pathname] || "Admin Panel";
@@ -31,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
       <img
         src="https://github.com/shadcn.png"
         alt="avatar"
-        className="rounded-full w-8 h-8"
+        className="rounded-full w-8 h-8 cursor-pointer"
       />
       <span className="text-gray-700 font-semibold">Admin</span>
     </div>

@@ -11,7 +11,7 @@ interface Review {
   rating: number;
   date: string;
   status: "Approved" | "Pending" | "Flagged";
-  avatar: string; // 👈 added avatar
+  avatar: string;
 }
 
 const ReviewRow: React.FC<{ review: Review }> = ({ review }) => (

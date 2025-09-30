@@ -52,7 +52,7 @@ export const DiscountManagement: React.FC = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Discount Management</h1>
-        <button className="flex items-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+        <button className="flex items-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer">
           <FiPlus className="mr-2" /> Add Discount
         </button>
       </div>
