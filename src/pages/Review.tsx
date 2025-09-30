@@ -15,7 +15,7 @@ const reviews: Review[] = [
     rating: 5,
     date: "Dec 15, 2024",
     status: "Approved",
-    avatar:""
+    avatar:"https://github.com/shadcn.png"
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const reviews: Review[] = [
     rating: 4,
     date: "Dec 14, 2024",
     status: "Pending",
-    avatar:""
+    avatar:"https://github.com/shadcn.png"
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const reviews: Review[] = [
     rating: 1,
     date: "Dec 13, 2024",
     status: "Flagged",
-    avatar:""
+    avatar:"https://github.com/shadcn.png"
   },
 ];
 

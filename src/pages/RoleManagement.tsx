@@ -91,7 +91,7 @@ const RoleManagement: React.FC = () => {
           <h1 className="text-2xl font-bold">Role Management</h1>
           <p className="text-gray-500">Manage user roles and permissions</p>
         </div>
-        <button className="mt-4 sm:mt-0 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-semibold">
+        <button className="mt-4 sm:mt-0 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-semibold cursor-pointer">
           + Assign Role
         </button>
       </div>
@@ -105,11 +105,11 @@ const RoleManagement: React.FC = () => {
 
       {/* Bottom Actions */}
       <div className="flex flex-col sm:flex-row justify-center gap-3">
-        <button className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md font-semibold">
+        <button className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md font-semibold cursor-pointer">
           <FaPlus className="w-4 h-4" />
           Assign Role
         </button>
-        <button className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md font-semibold">
+        <button className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md font-semibold cursor-pointer">
           <FaTrash className="w-4 h-4" />
           Remove Role
         </button>

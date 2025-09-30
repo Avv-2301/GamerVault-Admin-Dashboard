@@ -61,13 +61,13 @@ const UserRow: React.FC<UserRowProps> = ({
       <td className="px-4 py-3 font-semibold">{lastLogin}</td>
       <td className="px-4 py-3 flex space-x-2 text-gray-600">
         <button>
-          <FaEdit size={15} className="text-green-600" />
+          <FaEdit size={18} className="text-green-600 cursor-pointer" />
         </button>
         <button>
-          <FaUserShield size={15} className="text-blue-600" />
+          <FaUserShield size={18} className="text-blue-600 cursor-pointer" />
         </button>
         <button>
-          <FaTrash size={15} className="text-red-600" />
+          <FaTrash size={18} className="text-red-600 cursor-pointer" />
         </button>
       </td>
     </tr>

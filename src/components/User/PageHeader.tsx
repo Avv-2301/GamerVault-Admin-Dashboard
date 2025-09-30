@@ -22,7 +22,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
       {/* Button */}
       <button
         onClick={onAddUser}
-        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-semibold flex items-center gap-2 transition-colors duration-200"
+        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-semibold flex items-center gap-2 transition-colors duration-200 cursor-pointer"
       >
         + Add New User
       </button>
