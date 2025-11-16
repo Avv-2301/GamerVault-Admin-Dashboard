@@ -1,10 +1,43 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { FaUser, FaLock, FaShieldAlt } from "react-icons/fa";
 import { IoGameController } from "react-icons/io5";
 import { MdLogin } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../stores/authStore";
+import type { ApiError } from "../services/api";
+import { showError, showSuccess } from "../utils/notifications";
+
+interface LoginForm {
+  email: string;
+  password: string;
+}
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
+  const { login, isLoading, error, clearError } = useAuthStore();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>();
+
+  const onSubmit = async (data: LoginForm) => {
+    try {
+      clearError();
+      await login(data.email, data.password);
+      // Show success notification
+      showSuccess("Login successful! Redirecting...");
+      // Redirect to dashboard on success
+      navigate("/dashboard");
+    } catch (error) {
+      // Error is already handled by store and formatted
+      const apiError = error as ApiError;
+      showError(apiError.message || "Invalid credentials. Please try again.");
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-10">
       <div className="bg-white shadow-md rounded-lg p-6 sm:p-8 w-full max-w-md mx-auto">
@@ -22,7 +55,7 @@ const Login: React.FC = () => {
         </div>
 
         {/* Form */}
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           {/* Email / Username */}
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -33,11 +66,15 @@ const Login: React.FC = () => {
                 <FaUser />
               </span>
               <input
-                type="text"
-                placeholder="Enter your email or username"
+                type="email"
+                {...register("email", { required: "Email is required" })}
+                placeholder="Enter your email"
                 className="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm sm:text-base"
               />
             </div>
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Password */}
@@ -51,10 +88,14 @@ const Login: React.FC = () => {
               </span>
               <input
                 type="password"
+                {...register("password", { required: "Password is required" })}
                 placeholder="Enter your password"
                 className="w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm sm:text-base"
               />
             </div>
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Forgot Password */}
@@ -68,15 +109,21 @@ const Login: React.FC = () => {
           </div>
 
           {/* Submit Button */}
-          <Link to={"/dashboard"}>
-            <button
-              type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 sm:py-3 rounded-md flex items-center justify-center space-x-2 text-sm sm:text-base cursor-pointer"
-            >
-              <MdLogin size={20} className="sm:w-6 sm:h-6" />
-              <span className="font-semibold">Sign In to Admin Panel</span>
-            </button>
-          </Link>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`w-full ${
+              isLoading ? "bg-green-400" : "bg-green-600 hover:bg-green-700"
+            } text-white py-2 sm:py-3 rounded-md flex items-center justify-center space-x-2 text-sm sm:text-base`}
+          >
+            <MdLogin size={20} className="sm:w-6 sm:h-6" />
+            <span className="font-semibold">
+              {isLoading ? "Signing In..." : "Sign In to Admin Panel"}
+            </span>
+          </button>
+          {error && (
+            <p className="text-red-500 text-sm mt-2 text-center">{error}</p>
+          )}
         </form>
 
         {/* Secure Notice */}
