@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
+import { useUIStore } from "../../stores/uiStore";
 
 const Layout: React.FC = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
-  const closeSidebar = () => setSidebarOpen(false);
+  const { isSidebarOpen, toggleSidebar, closeSidebar } = useUIStore();
 
   return (
     <div className="flex min-h-screen w-full max-w-screen overflow-x-hidden">
@@ -17,6 +15,8 @@ const Layout: React.FC = () => {
       {/* Content */}
       <div className="flex-1 flex flex-col bg-gray-50 w-full max-w-screen overflow-x-hidden">
         <Navbar toggleSidebar={toggleSidebar} />
+        {/* Spacer for fixed navbar */}
+        <div className="h-[72px] sm:h-[88px]"></div>
 
         <main className="p-4 sm:p-6 flex-1 overflow-auto w-full max-w-screen">
           <Outlet />

@@ -12,3 +12,20 @@ export const formatTime = (date:Date)=>{
     
     return `${hoursStr}:${minutes}:${seconds} ${ampm}`;
 }
+
+/**
+ * Formats a date string or Date object to a readable date-time string
+ * @param date - Date string or Date object
+ * @returns Formatted date string (e.g., "Nov 16, 2025, 08:09:58 AM")
+ */
+export const formatDateTime = (date: string | Date): string => {
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  return dateObj.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  });
+};

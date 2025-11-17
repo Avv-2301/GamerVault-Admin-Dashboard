@@ -3,6 +3,7 @@ import PageHeader from "../components/User/PageHeader";
 import SearchFilterBar from "../components/User/SearchFilterBar";
 import UserTable from "../components/User/UserTable";
 import Pagination from "../components/common/Pagination";
+import { showInfo } from "../utils/notifications";
 
 const UserManagement: React.FC = () => {
   const [users] = useState([
@@ -51,7 +52,7 @@ const UserManagement: React.FC = () => {
     <PageHeader
       title="User Management"
       subtitle="Manage users, roles, and permissions for your gaming platform"
-      onAddUser={() => alert("Add user clicked")}
+      onAddUser={() => showInfo("Add user feature coming soon")}
     />
   </div>
 

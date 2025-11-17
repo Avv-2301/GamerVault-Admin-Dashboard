@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaSearch, FaPlus } from "react-icons/fa";
 import GameTable from "../components/games/GameTable";
 import Pagination from "../components/common/Pagination";
 
 const GamesManagement: React.FC = () => {
+  const navigate = useNavigate();
+  
   const games = [
     {
       id: "#001",
@@ -39,7 +42,10 @@ const GamesManagement: React.FC = () => {
           <h1 className="text-2xl font-bold">Games Management</h1>
           <p className="text-gray-500">Manage all games in your platform</p>
         </div>
-        <button className="mt-4 sm:mt-0 flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-semibold cursor-pointer">
+        <button
+          onClick={() => navigate("/dashboard/games/create")}
+          className="mt-4 sm:mt-0 flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md font-semibold cursor-pointer transition-colors"
+        >
           <FaPlus />
           Add New Game
         </button>
