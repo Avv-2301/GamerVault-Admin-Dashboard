@@ -3,8 +3,6 @@ import { FaUserShield, FaPlus, FaSearch, FaFilter } from "react-icons/fa";
 import AdminPermissionCard from "../components/admin-permissions/AdminPermissionCard";
 import type { AdminUser, PagePermission } from "../components/admin-permissions/AdminPermissionCard";
 import { showSuccess, showError, showInfo } from "../utils/notifications";
-import { apiGet, apiPost, apiPut, apiDelete } from "../services/api";
-import { API_CONFIG } from "../services/config";
 
 // Define all available pages
 const AVAILABLE_PAGES: PagePermission[] = [

@@ -5,12 +5,24 @@ import LoginHistoryModal from "../components/common/modals/LoginHistoryModal";
 import { useAuthStore } from "../stores/authStore";
 import { formatDateTime } from "../utils/helper";
 
+type SettingsItem = {
+  label: string;
+  value: string;
+  icon: React.ReactElement;
+  action?: () => void;
+  actionLabel?: string;
+};
+
 const Settings: React.FC = () => {
   const { user } = useAuthStore();
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [isHistoryModalOpen, setIsHistoryModalOpen] = useState(false);
 
-  const settingsSections = [
+  const settingsSections: Array<{
+    title: string;
+    icon: React.ReactElement;
+    items: SettingsItem[];
+  }> = [
     {
       title: "Account Information",
       icon: <FaUser className="text-green-600" size={20} />,
@@ -92,7 +104,7 @@ const Settings: React.FC = () => {
                         <p className="text-base text-gray-800">{item.value}</p>
                       </div>
                     </div>
-                    {item.action && (
+                    {item.action && item.actionLabel && (
                       <button
                         onClick={item.action}
                         className="ml-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors font-medium text-sm whitespace-nowrap"

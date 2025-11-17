@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaSave, FaSpinner, FaPlus, FaTrash, FaUpload } from "react-icons/fa";
-import { apiPost } from "../../services/api";
-import { API_CONFIG } from "../../services/config";
+import { FaArrowLeft, FaSpinner, FaPlus, FaTrash } from "react-icons/fa";
 import { showSuccess, showError } from "../../utils/notifications";
 import type { ApiError } from "../../services/api";
 
