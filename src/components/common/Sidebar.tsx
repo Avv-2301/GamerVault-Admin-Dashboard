@@ -10,6 +10,8 @@ import {
   FaHeadphonesAlt,
   FaUserShield,
   FaSignOutAlt,
+  FaLock,
+  FaFileAlt,
 } from "react-icons/fa";
 import { GiKnightBanner } from "react-icons/gi";
 import { IoGameController } from "react-icons/io5";
@@ -75,6 +77,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen = true, onClose }) => {
       title: "System",
       items: [
         { label: "Settings", icon: <FaCog size={20} />, path: "/dashboard/settings" },
+        { label: "Admin Permissions", icon: <FaLock size={20} />, path: "/dashboard/admin-permissions" },
+        { label: "Audit Logs", icon: <FaFileAlt size={20} />, path: "/dashboard/audit-logs" },
       ],
     },
   ];

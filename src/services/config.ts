@@ -85,6 +85,20 @@ export const API_CONFIG = {
       topGames: '/admin/dashboard/top-games',
       recentActivity: '/admin/dashboard/recent-activity',
     },
+    // Admin Permissions endpoints - proxied through gateway
+    permissions: {
+      list: '/admin/permissions',
+      detail: (id: string) => `/admin/permissions/${id}`,
+      update: (id: string) => `/admin/permissions/${id}`,
+      delete: (id: string) => `/admin/permissions/${id}`,
+      grant: '/admin/permissions/grant',
+      revoke: '/admin/permissions/revoke',
+    },
+    // Audit Logs endpoints - proxied through gateway
+    auditLogs: {
+      list: '/admin/audit-logs',
+      detail: (id: string) => `/admin/audit-logs/${id}`,
+    },
   },
 } as const;
 
