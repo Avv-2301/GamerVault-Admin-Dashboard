@@ -6,7 +6,7 @@ import {
   FaGift,
   FaExclamationTriangle,
 } from "react-icons/fa";
-import KPICard from "../dashboard/KPICard";
+import KPICard from "../Dashboard/KPICard";
 import AddWalletModal from "../Modals/AddWalletModal";
 import ManualDeductionModal from "../Modals/ManualDeductionModal";
 import BonusModal from "../Modals/BonusModal";

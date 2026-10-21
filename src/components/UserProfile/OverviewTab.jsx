@@ -5,7 +5,7 @@ import {
   FaWallet,
   FaTimesCircle,
 } from "react-icons/fa";
-import KPICard from "../dashboard/KPICard";
+import KPICard from "../Dashboard/KPICard";
 import { formatDate } from "../../services/helper";
 
 const OverviewTab = ({ user }) => {
