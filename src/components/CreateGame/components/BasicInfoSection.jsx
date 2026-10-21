@@ -49,15 +49,11 @@ const BasicInfoSection = ({ register, control, watch, setValue, errors, isProces
       }
       onImageProcessingChange(true)
       try {
-        const imageUrl = await uploadImageToCloudinary(file, 'games/thumbnails', {
-          maxWidth: 600,
-          maxHeight: 600,
-          maxBytes: 300 * 1024,
-        })
+        const imageUrl = await uploadImageToCloudinary(file, 'games/thumbnails')
         setValue('thumbnail', imageUrl, { shouldValidate: true })
         setValue('thumbnailPreview', imageUrl)
       } catch (imageError) {
-        alert(imageError.message || 'Could not process the selected image')
+        alert(imageError.message || 'Could not upload the selected image')
       } finally {
         onImageProcessingChange(false)
       }
@@ -363,9 +359,9 @@ const BasicInfoSection = ({ register, control, watch, setValue, errors, isProces
                 <div>
                   <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium mb-1">Click to upload thumbnail</p>
                   <p className="text-gray-500 dark:text-[#8b8fa3] text-xs">
-                    JPEG, PNG, WebP up to 25MB. Resized and compressed on upload (Recommended: 400x400px)
+                    JPEG, PNG, WebP up to 25MB. Uploaded to Cloudinary (Recommended: 400x400px)
                   </p>
-                  {isProcessingThumbnail && <p className="mt-1 text-[#10b981] text-xs">Resizing and compressing image…</p>}
+                  {isProcessingThumbnail && <p className="mt-1 text-[#10b981] text-xs">Uploading to Cloudinary…</p>}
                 </div>
                 <button
                   type="button"

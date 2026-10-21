@@ -111,9 +111,9 @@ const BasicInfoSection = ({ formData, errors, onFieldChange, onImageChange, isPr
                 <div className="text-center">
                   <p className="text-gray-900 dark:text-white text-xs sm:text-sm font-medium mb-1">Click to upload banner image</p>
                   <p className="text-gray-500 dark:text-[#8b8fa3] text-xs">
-                    JPEG, PNG, WebP up to 25MB. Resized and compressed on upload (Recommended: 1920x600px)
+                    JPEG, PNG, WebP up to 25MB. Uploaded to Cloudinary (Recommended: 1920x600px)
                   </p>
-                  {isProcessingImage && <p className="mt-1 text-[#10b981] text-xs">Resizing and compressing image…</p>}
+                  {isProcessingImage && <p className="mt-1 text-[#10b981] text-xs">Uploading to Cloudinary…</p>}
                 </div>
                 <button
                   type="button"

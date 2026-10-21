@@ -82,14 +82,10 @@ const CreateBanner = () => {
     if (!file) return
     setIsProcessingImage(true)
     try {
-      const imageUrl = await uploadImageToCloudinary(file, 'banners', {
-        maxWidth: 1920,
-        maxHeight: 600,
-        maxBytes: 600 * 1024,
-      })
+      const imageUrl = await uploadImageToCloudinary(file, 'banners')
       setFormData((prev) => ({ ...prev, image: imageUrl, imagePreview: imageUrl }))
     } catch (imageError) {
-      error(imageError.message || 'Could not process the selected image')
+      error(imageError.message || 'Could not upload the selected image')
     } finally {
       setIsProcessingImage(false)
     }

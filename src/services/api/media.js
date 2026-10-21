@@ -1,11 +1,17 @@
 import api from "../axios";
 import { ENDPOINTS } from "../apiRoutes/endPoints";
-import { compressImageToBlob } from "../helper";
 
-export const uploadImageToCloudinary = async (file, folder, options) => {
-  const compressedImage = await compressImageToBlob(file, options);
+export const uploadImageToCloudinary = async (file, folder) => {
+  if (!(file instanceof File)) throw new Error("Choose an image file to upload.");
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    throw new Error("Choose a JPEG, PNG, or WebP image.");
+  }
+  if (file.size > 25 * 1024 * 1024) {
+    throw new Error("The selected image must be 25 MB or smaller.");
+  }
+
   const formData = new FormData();
-  formData.append("image", compressedImage, "image.webp");
+  formData.append("image", file, file.name);
   formData.append("folder", folder);
 
   const response = await api.post(ENDPOINTS.UPLOADIMAGE, formData, {

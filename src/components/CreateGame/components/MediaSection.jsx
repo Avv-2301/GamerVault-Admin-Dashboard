@@ -6,7 +6,6 @@ import { uploadImageToCloudinary } from '../../../services/api/media'
 
 const MediaSection = ({ control, watch, setValue, errors, onProcessingChange }) => {
   const imageInputRef = useRef(null)
-  const [imageUrl, setImageUrl] = useState('')
   const [videoUrl, setVideoUrl] = useState('')
   const [isProcessingImages, setIsProcessingImages] = useState(false)
 
@@ -20,10 +19,6 @@ const MediaSection = ({ control, watch, setValue, errors, onProcessingChange }) 
     const remaining = 10 - watchedImages.length
     if (remaining <= 0) {
       window.alert('A game can have up to 10 media images.')
-      return
-    }
-    if (imageUrl.trim() && !watchedImages.includes(imageUrl.trim()) && remaining < 2) {
-      window.alert('Add the image URL first or remove an image to keep the 10 image maximum.')
       return
     }
     if (files.length > remaining) {
@@ -41,32 +36,17 @@ const MediaSection = ({ control, watch, setValue, errors, onProcessingChange }) 
     try {
       const uploadedImages = []
       for (const file of supportedFiles) {
-        uploadedImages.push(await uploadImageToCloudinary(file, 'games/media', {
-          maxWidth: 1600,
-          maxHeight: 1000,
-          maxBytes: 400 * 1024,
-        }))
+        uploadedImages.push(await uploadImageToCloudinary(file, 'games/media'))
       }
       setValue('images', [...watchedImages, ...uploadedImages], {
         shouldDirty: true,
         shouldValidate: true,
       })
     } catch (error) {
-      window.alert(error.message || 'Could not process the selected images.')
+      window.alert(error.message || 'Could not upload the selected images.')
     } finally {
       setIsProcessingImages(false)
       onProcessingChange?.(false)
-    }
-  }
-
-  const handleAddImage = () => {
-    if (watchedImages.length >= 10) {
-      window.alert('A game can have up to 10 media images.')
-      return
-    }
-    if (imageUrl.trim() && !watchedImages.includes(imageUrl.trim())) {
-      setValue('images', [...watchedImages, imageUrl.trim()])
-      setImageUrl('')
     }
   }
 
@@ -100,21 +80,6 @@ const MediaSection = ({ control, watch, setValue, errors, onProcessingChange }) 
         </label>
         <div className="flex flex-col sm:flex-row gap-2 mb-3">
           <input
-            type="url"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddImage())}
-            placeholder="Enter image URL"
-            className="flex-1 bg-gray-50 dark:bg-[#1e2742] border border-gray-300 dark:border-[#2a3441] text-gray-900 dark:text-[#e0e0e0] px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm placeholder:text-gray-400 dark:placeholder:text-[#6b7280] focus:outline-none focus:border-[#10b981] focus:ring-2 focus:ring-[#10b981]/20 transition-all"
-          />
-          <button
-            type="button"
-            onClick={handleAddImage}
-            className="px-3 sm:px-4 py-2 bg-[#10b981] text-white rounded-lg hover:opacity-90 transition-opacity text-xs sm:text-sm"
-          >
-            <FaPlus />
-          </button>
-          <input
             ref={imageInputRef}
             type="file"
             accept="image/jpeg,image/png,image/webp"
@@ -130,10 +95,10 @@ const MediaSection = ({ control, watch, setValue, errors, onProcessingChange }) 
             className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-gray-200 dark:bg-[#2a3441] text-gray-800 dark:text-white rounded-lg hover:opacity-90 disabled:opacity-50 text-xs sm:text-sm"
           >
             <FaUpload />
-            {isProcessingImages ? 'Processing…' : 'Upload Images'}
+            {isProcessingImages ? 'Uploading…' : 'Upload Images'}
           </button>
         </div>
-        <p className="text-gray-500 dark:text-[#8b8fa3] text-xs mb-3">JPEG, PNG, or WebP. Up to 10 images; files are resized and compressed automatically.</p>
+        <p className="text-gray-500 dark:text-[#8b8fa3] text-xs mb-3">JPEG, PNG, or WebP. Up to 10 images; selected files upload to Cloudinary.</p>
         <Controller
           name="images"
           control={control}

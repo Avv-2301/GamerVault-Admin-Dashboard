@@ -21,14 +21,10 @@ const GiftCardFormSection = ({ register, control, watch, setValue, errors }) => 
     if (!file) return
     setIsProcessingImage(true)
     try {
-      const imageUrl = await uploadImageToCloudinary(file, 'gift-cards', {
-        maxWidth: 800,
-        maxHeight: 500,
-        maxBytes: 300 * 1024,
-      })
+      const imageUrl = await uploadImageToCloudinary(file, 'gift-cards')
       setValue('image', imageUrl, { shouldDirty: true, shouldValidate: true })
     } catch (imageError) {
-      error(imageError.message || 'Could not process the selected image.')
+      error(imageError.message || 'Could not upload the selected image.')
     } finally {
       setIsProcessingImage(false)
     }
@@ -50,13 +46,13 @@ const GiftCardFormSection = ({ register, control, watch, setValue, errors }) => 
             <div className="flex items-center gap-2">
               <label htmlFor="giftCardImage" className={`cursor-pointer inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-[#2a3441] text-gray-700 dark:text-[#e0e0e0] text-xs sm:text-sm hover:bg-gray-100 dark:hover:bg-[#1e2742] ${isProcessingImage ? 'opacity-50 pointer-events-none' : ''}`}>
                 {isProcessingImage ? <FaSpinner className="animate-spin" /> : <FaImage />}
-                {isProcessingImage ? 'Processing image…' : image ? 'Change image' : 'Upload image'}
+                {isProcessingImage ? 'Uploading…' : image ? 'Change image' : 'Upload image'}
               </label>
               {image && <button type="button" onClick={() => setValue('image', '', { shouldDirty: true, shouldValidate: true })} className="inline-flex items-center gap-1 px-3 py-2 rounded-lg text-red-500 text-xs sm:text-sm hover:bg-red-50 dark:hover:bg-red-950/30"><FaTimes /> Remove</button>}
               <input id="giftCardImage" type="file" accept="image/png,image/jpeg,image/webp" onChange={handleImageChange} className="hidden" />
             </div>
           </div>
-          <p className="mt-1 text-gray-500 dark:text-[#8b8fa3] text-xs">Optional. Images are resized and compressed before saving.</p>
+          <p className="mt-1 text-gray-500 dark:text-[#8b8fa3] text-xs">Optional. Images upload directly to Cloudinary.</p>
         </div>
         {/* Amount */}
         <div>
